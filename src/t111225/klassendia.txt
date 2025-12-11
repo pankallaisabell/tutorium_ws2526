@@ -41,7 +41,7 @@ classDiagram
 
     class Teilnehmer {
         -name: String
-        -matrikelNr: int
+        -nummer: int
         -gebDatum: Datum
     }
 
