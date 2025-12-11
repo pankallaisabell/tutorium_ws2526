@@ -1,0 +1,96 @@
+Folgender Code kann in https://mermaid.live/ eingefügt werden, um das Klassendiagramm zu erstellen:
+
+classDiagram
+    class Sortierbar {
+        <<interface>>
+        +vergleiche(v: Veranstaltung) int
+    }
+
+    class VeranstaltungsPlaner {
+        -veranstaltungen: Veranstaltung[]
+        +hauptMenue()
+        #neuesEvent()
+        #drucken()
+    }
+
+    class Veranstaltung {
+        <<abstract>>
+        -titel: String
+        -ort: String
+        +setTitel(t: String)
+        +getTitel() String
+        +getBeschreibung() String
+    }
+
+    class Messe {
+        -datum: Datum
+        +getTag() int
+        +getMonat() int
+    }
+
+    class Konzert {
+        -ticketStatus: Status
+        -startZeit: DatumZeit
+        +getStatus() Status
+    }
+
+    class Workshop {
+        -datum: Datum
+        -teilnehmer: Teilnehmer[]
+    }
+
+    class Teilnehmer {
+        -name: String
+        -matrikelNr: int
+        -gebDatum: Datum
+    }
+
+    class Status {
+        <<enum>>
+        AUSVERKAUFT
+        VERFUEGBAR
+        WARTELISTE
+    }
+
+    class Datum {
+        -tag: int
+        -monat: int
+        -jahr: int
+        +Datum(t: int, m: int, j: int)
+        +setTag(t: int)
+        +getTag() int
+        ...
+    }
+
+    class Zeit {
+        -stunde: int
+        -minute: int
+        +Zeit(h: int, m: int)
+        ...
+    }
+
+    class DatumZeit {
+        -datum: Datum
+        -zeit: Zeit
+        +DatumZeit(d: Datum, z: Zeit)
+        ...
+    }
+
+    %% Beziehungen
+    Veranstaltung ..|> Sortierbar
+    VeranstaltungsPlaner o-- Veranstaltung
+    Veranstaltung <|-- Messe
+    Veranstaltung <|-- Konzert
+    Veranstaltung <|-- Workshop
+
+    Workshop *-- Teilnehmer
+
+    Messe *-- Datum
+    Workshop *-- Datum
+
+    Konzert *-- DatumZeit
+    Konzert *-- Status
+
+    DatumZeit *-- Datum
+    DatumZeit *-- Zeit
+    Teilnehmer o-- Datum
