@@ -18,8 +18,7 @@ class VeranstaltungsPlaner {
         }
     }
 
-    public void drucken() {
-        // Hier könnte man vorher sortieren (Bubblesort etc. unter Nutzung von .vergleiche)
+    public void print() {
         for (int i = 0; i < anzahlEvents; i++) {
             System.out.println(veranstaltungen[i].toString());
         }
@@ -36,6 +35,6 @@ class VeranstaltungsPlaner {
         planer.neuesEvent(new Messe("Tech-Expo", "Berlin", d2));
         planer.neuesEvent(new Konzert("Rock am Ring", "Nürburgring", new DatumZeit(d1, z1), Status.VERFUEGBAR));
 
-        planer.drucken();
+        planer.print();
     }
 }

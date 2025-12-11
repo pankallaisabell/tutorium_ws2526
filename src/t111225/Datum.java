@@ -17,7 +17,7 @@ class Datum {
 
     // Hilfsmethode für den Vergleich später (gibt z.B. YYYYMMDD als int zurück)
     public long toSortableInt() {
-        return jahr * 10000 + monat * 100 + tag;
+        return jahr * 10000L + monat * 100L + tag;
     }
 
     @Override
